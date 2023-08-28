@@ -22,15 +22,12 @@
 
         public static void main(String[] args) throws IOException {
             Scanner input = new Scanner(System.in);
+
+            in = new DataInputStream(socket.getInputStream());
+            out = new DataOutputStream(socket.getOutputStream());
+
             while(true)
             {
-                try {
-                    in = new DataInputStream(socket.getInputStream());
-                    out = new DataOutputStream(socket.getOutputStream());
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
 
                 System.out.println("Skriv et nummer");
 

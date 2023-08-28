@@ -10,22 +10,16 @@ public class Server {
     static DataOutputStream out;
     static ServerSocket server;
 
-    static {
-        try {
-            server = new ServerSocket(1992);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     static Socket socket;
     public static void main(String[] args) throws IOException {
+        server = new ServerSocket(1992);
+        socket = server.accept();
+        in = new DataInputStream(socket.getInputStream());
+        out = new DataOutputStream(socket.getOutputStream());
+
         while(true)
         {
-            socket = server.accept();
-            in = new DataInputStream(socket.getInputStream());
-            out = new DataOutputStream(socket.getOutputStream());
-
             int modtaget = in.readInt();
             System.out.println("Nummer modtaget: " + modtaget);
 
